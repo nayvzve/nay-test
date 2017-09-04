@@ -22,6 +22,7 @@ import messages from './messages';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
+import HeaderLink from './HeaderLink';
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
@@ -44,40 +45,58 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return (
       <article>
         <Helmet
-          title="Home Page"
+          title="Index"
           meta={[
-            { name: 'description', content: 'A React.js Boilerplate application homepage' },
+            { name: 'description', content: 'Prueba ReactJs' },
           ]}
         />
+
         <div>
           <CenteredSection>
             <H2>
-              <FormattedMessage {...messages.startProjectHeader} />
+              Prueba ReactJs
             </H2>
-            <p>
-              <FormattedMessage {...messages.startProjectMessage} />
-            </p>
           </CenteredSection>
           <Section>
             <H2>
-              <FormattedMessage {...messages.trymeHeader} />
+              LOGIN
             </H2>
             <Form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">
-                <FormattedMessage {...messages.trymeMessage} />
-                <AtPrefix>
-                  <FormattedMessage {...messages.trymeAtPrefix} />
-                </AtPrefix>
-                <Input
-                  id="username"
-                  type="text"
-                  placeholder="mxstbr"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                />
-              </label>
+              <div>
+                  <label htmlFor="username">
+                    Username
+                    <AtPrefix>
+                    </AtPrefix>
+                    <Input
+                      id="username"
+                      type="text"
+                      placeholder=" Username"
+                      value={this.props.username}
+                      onChange={this.props.onChangeUsername}
+                    />
+                  </label>
+                  <br/>
+                  <br/>
+                  <label htmlFor="password">
+                     Contraseña
+                    <AtPrefix>
+                    </AtPrefix>
+                    <Input
+                      id="password"
+                      type="text"
+                      placeholder=" Contraseña"
+                      value={this.props.password}
+                      onChange={this.props.onChangeUsername}
+                    />
+                  </label>
+                  <br/>
+                  <br/>
+                  <HeaderLink to="/">
+                    <FormattedMessage {...messages.btnMessage} />
+                  </HeaderLink>
+              </div>
             </Form>
-            <ReposList {...reposListProps} />
+
           </Section>
         </div>
       </article>
